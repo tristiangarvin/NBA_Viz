@@ -54,7 +54,10 @@ def get_callbacks(app):
         df2 = df[df['PLAYER_NAME'] == player]
 
         df4 = df2
-        df4['shot_count'] = df4.groupby('SHOT_TYPE')['PLAYER_ID'].transform('count')
+
+        #df4['shot_count'] = df4.groupby('SHOT_TYPE')['PLAYER_ID'].transform('count')
+
+        df4.loc[:, ('shot_count')] = df4.groupby('SHOT_TYPE')['PLAYER_ID'].transform('count')
 
         pie = px.pie(df4, values='shot_count', names='SHOT_TYPE', color='SHOT_TYPE', hole=.5, color_discrete_map={'2PT Field Goal':'#E85669','3PT Field Goal':'#25A9F3',})
         pie.update_traces(textposition='inside', textinfo='percent+label')
@@ -113,7 +116,7 @@ def get_callbacks(app):
         top = top.head(10)
 
         action = pd.DataFrame().assign(PLAYER_NAME=df2['PLAYER_NAME'], ACTION=df2['ACTION_TYPE'], PLAYER_ID=df2['PLAYER_ID'])
-        action['count'] = action.groupby('ACTION')['PLAYER_ID'].transform('count')
+        action.loc[:, ('count')] = action.groupby('ACTION')['PLAYER_ID'].transform('count')
         action = action.drop_duplicates()
         action = action.sort_values('count', ascending=False)
         
