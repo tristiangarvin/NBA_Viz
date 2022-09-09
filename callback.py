@@ -4,9 +4,8 @@ import pandas as pd
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input
 from dash.dependencies import Output
-import os
-import numpy as np
-from layout import content_layout
+
+
 from data import df
 
 
@@ -179,10 +178,6 @@ def get_callbacks(app):
 
         player_chart = px.scatter(dff, x="LOC_X", y="LOC_Y", color="SHOT_MADE_STRING", color_discrete_sequence=[
                                 "#E85669", "#41A3CA"], category_orders={"SHOT_MADE_STRING": ['0', '1']},)
-        
-        max_points = dff['points'].max()
-
-
 
         player_chart.update_xaxes(range=[250, -250], visible=False, fixedrange=True,)
         player_chart.update_yaxes(range=[-55, 420], visible=False, fixedrange=True,)
@@ -195,7 +190,6 @@ def get_callbacks(app):
 
         player_chart.update_layout({
             'paper_bgcolor': 'rgba(0,0,0,0)',
-            #'plot_bgcolor': '#32383E',
             'plot_bgcolor': 'rgba(0,0,0,0)',
         })
 
