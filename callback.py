@@ -1,5 +1,3 @@
-from optparse import Values
-from turtle import position
 from dash import Dash, html, dcc, Input, Output, dash_table
 import plotly.express as px
 import pandas as pd
@@ -57,20 +55,22 @@ def get_callbacks(app):
 
         df4.loc[:, ('shot_count')] = df4.groupby('SHOT_TYPE')['PLAYER_ID'].transform('count')
 
-        pie = px.pie(df4, values='shot_count', names='SHOT_TYPE', color='SHOT_TYPE', hole=.5, color_discrete_map={'2PT Field Goal':'#E85669','3PT Field Goal':'#25A9F3',})
+        pie = px.pie(df4, values='shot_count', names='SHOT_TYPE', color='SHOT_TYPE', hole=.5, title="Distribution of 3 Pointers & 2 Pointers", color_discrete_map={'2PT Field Goal':'#E85669','3PT Field Goal':'#25A9F3',})
         pie.update_traces(textposition='inside', textinfo='percent+label')
 
         pie.update_layout(
             {
-            'paper_bgcolor': 'rgba(0,0,0,0)',
-            'plot_bgcolor': 'rgba(0,0,0,0)'
+            'paper_bgcolor': '#32383E',
+            'plot_bgcolor': '#32383E',
             },
             showlegend=False,
             autosize=False,
-            margin={'t': 0, 'l': 0, 'b': 100, 'r': 0},
+            margin={'t':60, 'l': 20, 'b': 20, 'r': 20},
             font_color="white",
             hovermode="x",
         )
+
+
 
 
 
@@ -88,7 +88,7 @@ def get_callbacks(app):
             },
             showlegend=False,
             autosize=False,
-            margin={'t': 60, 'l': 70, 'b': 20, 'r': 0,},
+            margin={'t': 60, 'l': 70, 'b': 70, 'r': 0,},
             font_color="white",
         )
 
@@ -120,7 +120,7 @@ def get_callbacks(app):
         
         skeet = action
         skeet = skeet.head(10)
-        bar = px.bar(skeet, x='ACTION', y='count', title='Most Frequent Shots Taken',)
+        bar = px.bar(skeet, x='ACTION', y='count', title='Shot Frequency by Type',)
 
         bar.update_layout(
             {

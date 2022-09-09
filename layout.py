@@ -96,11 +96,11 @@ content_layout = dbc.Container([
                     ], className="pt-3 pb-3", lg=7),
                 ],),
                 dbc.Row([
-                    dbc.Col([],lg=1),
+                    #dbc.Col([],lg=1),
                     dbc.Col([
                             dcc.Graph(id='pie-chart', figure={}, responsive=True, config={'displayModeBar': False, },), 
-                        ], lg=3, className='pt-3'),
-                    dbc.Col([],lg=1),
+                        ], lg=5, className='pt-3'),
+                    #dbc.Col([],lg=1),
                     dbc.Col([
                         dcc.Graph(id='bar-chart', figure={}, responsive=True,
                                   config={'displayModeBar': False, },),
