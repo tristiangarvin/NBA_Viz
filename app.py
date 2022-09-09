@@ -18,12 +18,6 @@ app = Dash(__name__, external_stylesheets=[dbc.themes.SLATE],  # bootstrap theme
 )
 server = app.server  # define flask app.server
 
-# dir = "C:\\Users\\trist\Documents\\CodeRepository\\DogImageAPI\\nba"
-# os.chdir(dir)
-
-# dir = "C:\\Users\\tgarvin\\Desktop\\Projects\\dash"
-# os.chdir(dir)
-
 app.layout = content_layout
 
 get_callbacks(app)
