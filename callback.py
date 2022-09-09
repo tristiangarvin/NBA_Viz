@@ -8,7 +8,6 @@ from dash.dependencies import Input
 from dash.dependencies import Output
 import os
 import numpy as np
-
 from layout import content_layout
 from data import df
 
@@ -53,9 +52,8 @@ def get_callbacks(app):
 
         df2 = df[df['PLAYER_NAME'] == player]
 
-        df4 = df2
+        df4 = df2.copy()
 
-        #df4['shot_count'] = df4.groupby('SHOT_TYPE')['PLAYER_ID'].transform('count')
 
         df4.loc[:, ('shot_count')] = df4.groupby('SHOT_TYPE')['PLAYER_ID'].transform('count')
 
@@ -229,6 +227,4 @@ def get_callbacks(app):
         line.add_hline(y=points, line_width=3, line_dash="dash", line_color="white")
         
 
-        return player_chart, [{"label": game, "value": game} for game in dff.GAME_NAME.unique()], f'Points Scored (Selected): {game_points}', f'Shooting Percentage (Selected): {game_percentage}', f'Overall Shooting Percentage: {percentage}', f'Points Per Game (No Free-throws): {points}', player_points, line, pie, bar
-
-
+        return player_chart, [{"label": game, "value": game} for game in df2.GAME_NAME.unique()], f'Points Scored (Selected): {game_points}', f'Shooting Percentage (Selected): {game_percentage}', f'Overall Shooting Percentage: {percentage}', f'Points Per Game (No Free-throws): {points}', player_points, line, pie, bar
