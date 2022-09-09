@@ -21,8 +21,7 @@ conditions = [
 choices = [3, 2, 0]
 df['points'] = np.select(conditions, choices)
 
-df['gamepoints'] = df.groupby(['PLAYER_ID', 'GAME_ID'])[
-    'points'].transform('sum')
+df['gamepoints'] = df.groupby(['PLAYER_ID', 'GAME_ID'])['points'].transform('sum')
 df['gamepoints'] = df['gamepoints'].astype(str)
 
 df['GAME_NAME'] = df['HTM'] + ' @ ' + df['VTM'] + \
@@ -32,5 +31,7 @@ df
 
 df = df.sort_values('dates')
 
-df['zone_count'] = df.groupby(['SHOT_ZONE_BASIC', 'SHOT_ZONE_AREA'])[
-    'SHOT_ZONE_BASIC'].transform('count')
+df['zone_count'] = df.groupby(['SHOT_ZONE_BASIC', 'SHOT_ZONE_AREA', 'PLAYER_ID'])['PLAYER_ID'].transform('count')
+
+
+df

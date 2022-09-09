@@ -1,14 +1,7 @@
-from dash import Dash, html, dcc, Input, Output, dash_table
-import plotly.express as px
-import pandas as pd
+from dash import Dash
 import dash_bootstrap_components as dbc
-from dash.dependencies import Input
-from dash.dependencies import Output
-import os
-import numpy as np
 
 from layout import content_layout
-from data import df
 from callback import get_callbacks
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.SLATE],  # bootstrap theme settings
@@ -16,7 +9,7 @@ app = Dash(__name__, external_stylesheets=[dbc.themes.SLATE],  # bootstrap theme
     {"name": "viewport", "content": "width=device-width, initial-scale=1, maximum-scale=1.2, minimum-scale=0.5,"}
 ]
 )
-server = app.server  # define flask app.server
+server = app.server
 
 app.layout = content_layout
 

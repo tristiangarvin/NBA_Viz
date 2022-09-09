@@ -2,6 +2,7 @@
 
 body {
     font-family: 'Oswald', sans-serif;
+    background-image: url(transparent-square-tiles-1920x1080.png);
 }
 
 h1 {
@@ -21,4 +22,10 @@ p {
 label {
     margin-right: 10px;
     margin-left: 5px;
+}
+
+
+#pie-chart {
+    padding-left: 3em;
+    padding-right: 3em;
 }
