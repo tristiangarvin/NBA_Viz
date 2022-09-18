@@ -1,5 +1,5 @@
 # NBA Data Visualization With Plotly Dash
-Visualizing over 180,000 rows of NBA Shot Chart data from the gathered from the NBA API. Created with Plotly Dash, Dash Bootstrap, localized images and CSS. 
+Visualizing over 180,000 rows of NBA Shot Chart data from the gathered from the NBA API. Created with Plotly Dash, Dash Bootstrap, localized images and CSS. Hosted with Heroku. 
 
 https://nbadashapp.herokuapp.com/
 
